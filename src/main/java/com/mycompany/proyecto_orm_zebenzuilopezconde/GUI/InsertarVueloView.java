@@ -11,9 +11,12 @@ import com.mycompany.proyecto_orm_zebenzuilopezconde.entities.Vuelo;
 import com.mycompany.proyecto_orm_zebenzuilopezconde.services.*;
 
 import javax.swing.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 /**
- *
  * @author Zeben
  */
 public class InsertarVueloView extends javax.swing.JDialog {
@@ -29,6 +32,7 @@ public class InsertarVueloView extends javax.swing.JDialog {
         avionDAO = new AvionDAO(hUtil.getSessionFactory());
         pilotoDAO = new PilotoDAO(hUtil.getSessionFactory());
         miembroDAO = new MiembroDAO(hUtil.getSessionFactory());
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
@@ -113,88 +117,88 @@ public class InsertarVueloView extends javax.swing.JDialog {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jLabel15)
-                        .addGap(124, 124, 124))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(botonVolver2)
-                                .addGap(42, 42, 42))
-                            .addGroup(layout.createSequentialGroup()
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel16)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(avionText)
-                                .addComponent(destinoText)
-                                .addComponent(origenText)
-                                .addComponent(numVueloText, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                                .addComponent(horaText)
-                                .addComponent(fechaText, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(pilotoText)
-                                .addComponent(miembroText)))))
-                .addGap(25, 25, 25))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(54, 54, 54)
+                                                .addComponent(jLabel15)
+                                                .addGap(124, 124, 124))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                                .addComponent(botonVolver2)
+                                                                .addGap(42, 42, 42))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(jLabel17)
+                                                                        .addComponent(jLabel14)
+                                                                        .addComponent(jLabel16)
+                                                                        .addComponent(jLabel7)
+                                                                        .addComponent(jLabel6)
+                                                                        .addComponent(jLabel5)
+                                                                        .addComponent(jLabel8)
+                                                                        .addComponent(jLabel9))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jButton3)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                .addComponent(avionText)
+                                                                .addComponent(destinoText)
+                                                                .addComponent(origenText)
+                                                                .addComponent(numVueloText, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                                                                .addComponent(horaText)
+                                                                .addComponent(fechaText, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                .addComponent(pilotoText)
+                                                                .addComponent(miembroText)))))
+                                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel15)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(numVueloText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14))
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(origenText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel17))
-                        .addGap(47, 47, 47))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(destinoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel16)))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fechaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(horaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pilotoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(miembroText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(avionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(botonVolver2))
-                .addContainerGap())
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel15)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(numVueloText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel14))
+                                                .addGap(25, 25, 25)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(origenText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel17))
+                                                .addGap(47, 47, 47))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(destinoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel16)))
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(fechaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel9))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(horaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel8))
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(pilotoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel7))
+                                .addGap(33, 33, 33)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(miembroText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel5))
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(avionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jButton3)
+                                        .addComponent(botonVolver2))
+                                .addContainerGap())
         );
 
         pack();
@@ -204,39 +208,75 @@ public class InsertarVueloView extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_origenTextActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        String codigo = numVueloText.getText();
-        String origen = origenText.getText();
-        String destino = destinoText.getText();
-        String fecha = fechaText.getText();
-        String hora = horaText.getText();
-        Piloto piloto = pilotoDAO.verPilotoPorId(Long.parseLong(pilotoText.getText()));
-        Avion avion = avionDAO.verAvionPorId(Long.parseLong(avionText.getText()));
-        Miembro miembro = miembroDAO.verMiembroPorId(Long.parseLong(miembroText.getText()));
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+    // TODO add your handling code here:
+    String codigo = numVueloText.getText();
+    String origen = origenText.getText();
+    String destino = destinoText.getText();
+    String fecha = fechaText.getText();
+    String hora = horaText.getText();
+    Long idPiloto = Long.parseLong(pilotoText.getText());
+    Long idAvion = Long.parseLong(avionText.getText());
+    Long idMiembro = Long.parseLong(miembroText.getText());
 
-        Vuelo vueloNuevo = new Vuelo();
-        vueloNuevo.setOrigen(origen);
-        vueloNuevo.setDestino(destino);
-        vueloNuevo.setNumeroDeVuelo(codigo);
-        vueloNuevo.setFecha(fecha);
-        vueloNuevo.setHoraSalida(hora);
-        vueloNuevo.setPiloto(piloto);
-        vueloNuevo.setMiembro(miembro);
-        vueloNuevo.setAvion(avion);
+    // Verificar si el piloto, avión y miembro existen
+    Piloto piloto = pilotoDAO.verPilotoPorId(idPiloto);
+    Avion avion = avionDAO.verAvionPorId(idAvion);
+    Miembro miembro = miembroDAO.verMiembroPorId(idMiembro);
 
-        vueloDAO.insertarVuelo(vueloNuevo);
-        System.out.println("VUELO INSERTADO CON EXITO");
+    if (numVueloText.getText().isEmpty() || origenText.getText().isEmpty() || destinoText.getText().isEmpty()
+            || fechaText.getText().isEmpty() || horaText.getText().isEmpty() || pilotoText.getText().isEmpty()
+            || avionText.getText().isEmpty() || miembroText.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos");
+        return;
+    } else if (piloto == null) {
+        JOptionPane.showMessageDialog(null, "No se encontró un piloto con ID: " + idPiloto);
+        return;
+    } else if (avion == null) {
+        JOptionPane.showMessageDialog(null, "No se encontró un avión con ID: " + idAvion);
+        return;
+    } else if (miembro == null) {
+        JOptionPane.showMessageDialog(null, "No se encontró un miembro con ID: " + idMiembro);
+        return;
+    }
 
-        numVueloText.setText("");
-        origenText.setText("");
-        destinoText.setText("");
-        fechaText.setText("");
-        horaText.setText("");
-        pilotoText.setText("");
-        avionText.setText("");
-        miembroText.setText("");
-    }//GEN-LAST:event_jButton3ActionPerformed
+    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+
+    try {
+        LocalDate.parse(fecha, dateFormatter);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "La fecha debe estar en el formato 'yyyy-MM-dd'");
+        return;
+    }
+
+    try {
+        LocalTime.parse(hora, timeFormatter);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "La hora debe estar en el formato 'HH:mm'");
+        return;
+    }
+
+    Vuelo vueloNuevo = new Vuelo();
+    vueloNuevo.setOrigen(origen);
+    vueloNuevo.setDestino(destino);
+    vueloNuevo.setNumeroDeVuelo(codigo);
+    vueloNuevo.setFechaVuelo(LocalDate.parse(fecha, dateFormatter));
+    vueloNuevo.setHoraSalida(LocalTime.parse(hora, timeFormatter));
+    vueloNuevo.setPiloto(piloto);
+    vueloNuevo.setMiembro(miembro);
+    vueloNuevo.setAvion(avion);
+
+    vueloDAO.insertarVuelo(vueloNuevo);
+    numVueloText.setText("");
+    origenText.setText("");
+    destinoText.setText("");
+    fechaText.setText("");
+    horaText.setText("");
+    pilotoText.setText("");
+    avionText.setText("");
+    miembroText.setText("");
+}
 
     private void botonVolver2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolver2ActionPerformed
         // TODO add your handling code here:
@@ -250,7 +290,7 @@ public class InsertarVueloView extends javax.swing.JDialog {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -305,5 +345,5 @@ public class InsertarVueloView extends javax.swing.JDialog {
     private javax.swing.JTextField numVueloText;
     private javax.swing.JTextField origenText;
     private javax.swing.JTextField pilotoText;
-    // End of variables declaration//GEN-END:variables
+// End of variables declaration//GEN-END:variables
 }

@@ -10,6 +10,7 @@ import com.mycompany.proyecto_orm_zebenzuilopezconde.entities.Piloto;
 import com.mycompany.proyecto_orm_zebenzuilopezconde.entities.Vuelo;
 import com.mycompany.proyecto_orm_zebenzuilopezconde.services.*;
 
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class PrincipalView extends javax.swing.JFrame {
      */
     public PrincipalView() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

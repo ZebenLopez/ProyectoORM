@@ -3,6 +3,8 @@ package com.mycompany.proyecto_orm_zebenzuilopezconde.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Set;
 /**
  * @autor Zebenzui López Conde
  * @version 1.0
@@ -39,10 +41,10 @@ public class Avion {
     /**
      * El vuelo asociado a este avión.
      */
-    @Getter
-    @Setter
-    @OneToOne(mappedBy = "avion", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private Vuelo vuelo;
+//    @Getter
+//    @Setter
+    @OneToMany(mappedBy = "avion", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private Set<Vuelo> vuelos;
 
     /**
      * Constructor vacío para la creación de un objeto Avion.

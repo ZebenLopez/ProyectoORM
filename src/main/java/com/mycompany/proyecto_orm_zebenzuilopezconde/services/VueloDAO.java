@@ -8,14 +8,16 @@ import org.hibernate.query.Query;
 
 import javax.swing.*;
 import java.util.List;
+
 /**
- * @autor Zebenzui López Conde
  * @version 1.0
- *
+ * <p>
  * Clase DAO para la entidad Vuelo.
+ * @autor Zebenzui López Conde
  */
 public class VueloDAO {
     private final SessionFactory sessionFactory;
+
     /**
      * Constructor que recibe la SessionFactory (debe ser inyectado por Spring o similar)
      *
@@ -24,6 +26,7 @@ public class VueloDAO {
     public VueloDAO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
+
     /**
      * Método para obtener todos los vuelos utilizando SQL nativo
      *
@@ -36,25 +39,43 @@ public class VueloDAO {
             return query.list();
         }
     }
+
     /**
      * Método para insertar un vuelo en la base de datos.
      *
      * @param vuelo El vuelo a insertar.
      */
-    public void insertarVuelo(Vuelo vuelo) {
-        Transaction transaction = null;
-        try (Session session = sessionFactory.openSession()) {
-            transaction = session.beginTransaction();
-            session.persist(vuelo);
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
+public void insertarVuelo(Vuelo vuelo) {
+    Transaction transaction = null;
+    try (Session session = sessionFactory.openSession()) {
+        // Verificar si el vuelo ya existe
+        if (vuelo.getId() != null) {
+            Vuelo vueloExistente = session.get(Vuelo.class, vuelo.getId());
+            if (vueloExistente != null) {
+                joptionMessage("Ya existe un vuelo con ID: " + vuelo.getId());
+                return;
             }
-            mostrarMensaje("Error al insertar el vuelo");
-            e.printStackTrace();
         }
+
+        // Verificar si el piloto, miembro o avión ya están asignados a un vuelo en la misma fecha y hora
+        if (existeVueloConMismosRecursos(vuelo)) {
+            joptionMessage("Ya existe un vuelo con los mismos recursos en la misma fecha y hora");
+            return;
+        }
+
+        transaction = session.beginTransaction();
+        session.persist(vuelo);
+        transaction.commit();
+        joptionMessage("Vuelo insertado correctamente");
+    } catch (Exception e) {
+        if (transaction != null && transaction.isActive()) {
+            transaction.rollback();
+        }
+        joptionMessage("Error al insertar el vuelo: " + e.getMessage());
+        e.printStackTrace();
     }
+}
+
     /**
      * Método para eliminar un vuelo por su ID.
      *
@@ -68,25 +89,40 @@ public class VueloDAO {
                 Vuelo vuelo = session.get(Vuelo.class, idVuelo);
                 if (vuelo != null) {
                     session.remove(vuelo);
-                    mostrarMensaje("Vuelo eliminado correctamente");
+                    joptionMessage("Vuelo eliminado correctamente");
                 } else {
-                    mostrarMensaje("No se encontró un vuelo con ID: " + idVuelo);
+                    joptionMessage("No se encontró un vuelo con ID: " + idVuelo);
                 }
                 transaction.commit();
             } catch (Exception e) {
                 if (transaction != null) {
                     transaction.rollback();
                 }
+                joptionMessage("Error al eliminar el vuelo");
                 e.printStackTrace();
             }
         }
     }
+
+    public boolean existeVueloConMismosRecursos(Vuelo vuelo) {
+        try (Session session = sessionFactory.openSession()) {
+            Query query = session.createQuery("FROM Vuelo v WHERE v.fechaVuelo = :fecha AND v.horaSalida = :hora AND (v.piloto.id_piloto = :pilotoId OR v.miembro.id_miembro = :miembroId OR v.avion.id_avion = :avionId)");
+            query.setParameter("fecha", vuelo.getFechaVuelo());
+            query.setParameter("hora", vuelo.getHoraSalida());
+            query.setParameter("pilotoId", vuelo.getPiloto().getId_piloto());
+            query.setParameter("miembroId", vuelo.getMiembro().getId_miembro());
+            query.setParameter("avionId", vuelo.getAvion().getId_avion());
+            List results = query.list();
+            return !results.isEmpty();
+        }
+    }
+
     /**
      * Método para mostrar un mensaje en un JOptionPane.
      *
      * @param mensaje El mensaje a mostrar.
      */
-    private void mostrarMensaje(String mensaje) {
+    private void joptionMessage(String mensaje) {
         JOptionPane.showMessageDialog(null, mensaje);
     }
 }

@@ -22,8 +22,8 @@ public class InsertarAvionView extends javax.swing.JDialog {
     public InsertarAvionView() {
         initComponents();
         avionDAO = new AvionDAO(hUtil.getSessionFactory());
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
     }
 
     /**

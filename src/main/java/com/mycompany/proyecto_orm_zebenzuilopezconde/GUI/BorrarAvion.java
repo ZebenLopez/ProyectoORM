@@ -7,6 +7,8 @@ package com.mycompany.proyecto_orm_zebenzuilopezconde.GUI;
 import com.mycompany.proyecto_orm_zebenzuilopezconde.services.AvionDAO;
 import com.mycompany.proyecto_orm_zebenzuilopezconde.services.HibernateUtil;
 
+import javax.swing.*;
+
 /**
  *
  * @author Zeben
@@ -20,6 +22,8 @@ public class BorrarAvion extends javax.swing.JDialog {
     public BorrarAvion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     public BorrarAvion() {

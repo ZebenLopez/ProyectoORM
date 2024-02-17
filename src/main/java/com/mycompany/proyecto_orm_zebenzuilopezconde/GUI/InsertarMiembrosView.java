@@ -22,6 +22,7 @@ public class InsertarMiembrosView extends javax.swing.JDialog {
     public InsertarMiembrosView() {
         initComponents();
         miembroDAO = new MiembroDAO(hUtil.getSessionFactory());
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 

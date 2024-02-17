@@ -2,6 +2,7 @@ package com.mycompany.proyecto_orm_zebenzuilopezconde.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Set;
 /**
@@ -25,6 +26,7 @@ public class Miembro extends Persona {
     /**
      * Los vuelos asociados a este miembro.
      */
+//    @Setter
     @OneToMany(mappedBy = "miembro", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<Vuelo> vuelos;
 

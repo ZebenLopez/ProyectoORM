@@ -22,6 +22,8 @@ public class BorrarMiembro extends javax.swing.JDialog {
     public BorrarMiembro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     public BorrarMiembro() {

@@ -7,6 +7,8 @@ package com.mycompany.proyecto_orm_zebenzuilopezconde.GUI;
 import com.mycompany.proyecto_orm_zebenzuilopezconde.services.HibernateUtil;
 import com.mycompany.proyecto_orm_zebenzuilopezconde.services.VueloDAO;
 
+import javax.swing.*;
+
 /**
  *
  * @author Zeben
@@ -20,6 +22,8 @@ public class BorrarVuelo extends javax.swing.JDialog {
     public BorrarVuelo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     public BorrarVuelo() {
