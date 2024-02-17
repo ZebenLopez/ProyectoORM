@@ -11,6 +11,7 @@ import com.mycompany.proyecto_orm_zebenzuilopezconde.services.PilotoDAO;
  *
  * @author Zeben
  */
+@SuppressWarnings("all")
 public class BorrarPiloto extends javax.swing.JDialog {
 
     /**

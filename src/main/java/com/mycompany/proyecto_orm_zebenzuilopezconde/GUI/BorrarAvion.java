@@ -11,6 +11,7 @@ import com.mycompany.proyecto_orm_zebenzuilopezconde.services.HibernateUtil;
  *
  * @author Zeben
  */
+@SuppressWarnings("all")
 public class BorrarAvion extends javax.swing.JDialog {
 
     /**

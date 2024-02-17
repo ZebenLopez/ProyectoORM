@@ -11,6 +11,7 @@ import com.mycompany.proyecto_orm_zebenzuilopezconde.services.VueloDAO;
  *
  * @author Zeben
  */
+@SuppressWarnings("all")
 public class BorrarVuelo extends javax.swing.JDialog {
 
     /**

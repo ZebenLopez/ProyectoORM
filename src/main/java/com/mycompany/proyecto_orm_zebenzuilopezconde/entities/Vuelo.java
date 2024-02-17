@@ -1,60 +1,100 @@
 package com.mycompany.proyecto_orm_zebenzuilopezconde.entities;
 
 import jakarta.persistence.*;
+import lombok.Setter;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
-
+/**
+ * @autor Zebenzui López Conde
+ * @version 1.0
+ *
+ * Curso: 2ºA DAM
+ * Representa un vuelo en el sistema.
+ */
 @Entity
 public class Vuelo {
 
+    /**
+     * El identificador único del vuelo.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_vuelo;
 
+    /**
+     * El origen del vuelo.
+     */
+    @Setter
     private String origen;
 
+    /**
+     * El destino del vuelo.
+     */
+    @Setter
     private String destino;
 
+    /**
+     * El número de vuelo.
+     */
+    @Setter
     private String numeroDeVuelo;
 
+    /**
+     * La fecha del vuelo.
+     */
     private String fechaVuelo;
 
+    /**
+     * La hora de salida del vuelo.
+     */
+    @Setter
     private String horaSalida;
 
+    /**
+     * El piloto del vuelo.
+     */
+    @Setter
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "id_piloto")
     private Piloto piloto;
 
+    /**
+     * El miembro asociado al vuelo.
+     */
+    @Setter
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "id_miembro")
     private Miembro miembro;
 
+    /**
+     * El avión asociado al vuelo.
+     */
+    @Setter
     @OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "id_avion")
     private Avion avion;
 
+    /**
+     * Constructor vacío para la creación de un objeto Vuelo.
+     */
     public Vuelo() {
     }
 
+    /**
+     * Constructor para la creación de un objeto Vuelo con origen, destino, número de vuelo, fecha, hora de salida y avión.
+     *
+     * @param origen El origen del vuelo.
+     * @param destino El destino del vuelo.
+     * @param numeroDeVuelo El número de vuelo.
+     * @param fecha La fecha del vuelo.
+     * @param horaSalida La hora de salida del vuelo.
+     * @param avion El avión asociado al vuelo.
+     */
     public Vuelo(String origen, String destino, String numeroDeVuelo, String fecha, String horaSalida, Avion avion) {
         this.origen = origen;
         this.destino = destino;
         this.numeroDeVuelo = numeroDeVuelo;
         this.fechaVuelo = fecha;
         this.horaSalida = horaSalida;
-        this.avion = avion;
-    }
-
-    public Vuelo(Long id_vuelo, String origen, String destino, String numeroDeVuelo, String fechaVuelo, String horaSalida, Piloto piloto, Miembro miembro, Avion avion) {
-        this.id_vuelo = id_vuelo;
-        this.origen = origen;
-        this.destino = destino;
-        this.numeroDeVuelo = numeroDeVuelo;
-        this.fechaVuelo = fechaVuelo;
-        this.horaSalida = horaSalida;
-        this.piloto = piloto;
-        this.miembro = miembro;
         this.avion = avion;
     }
 
@@ -86,10 +126,6 @@ public class Vuelo {
         return numeroDeVuelo;
     }
 
-    public String getFecha() {
-        return fechaVuelo;
-    }
-
     public String getHoraSalida() {
         return horaSalida;
     }
@@ -102,32 +138,12 @@ public class Vuelo {
         this.id_vuelo = id;
     }
 
-    public void setOrigen(String origen) {
-        this.origen = origen;
-    }
-
-    public void setDestino(String destino) {
-        this.destino = destino;
-    }
-
-    public void setNumeroDeVuelo(String numeroDeVuelo) {
-        this.numeroDeVuelo = numeroDeVuelo;
-    }
-
     public void setFecha(String fecha) {
         this.fechaVuelo = fecha;
     }
 
     public Long getId_vuelo() {
         return id_vuelo;
-    }
-
-    public void setHoraSalida(String horaSalida) {
-        this.horaSalida = horaSalida;
-    }
-
-    public void setAvion(Avion avion) {
-        this.avion = avion;
     }
 
     public String getFechaVuelo() {
@@ -140,18 +156,6 @@ public class Vuelo {
 
     public Miembro getMiembro() {
         return miembro;
-    }
-
-    public void setFechaVuelo(String fechaVuelo) {
-        this.fechaVuelo = fechaVuelo;
-    }
-
-    public void setPiloto(Piloto piloto) {
-        this.piloto = piloto;
-    }
-
-    public void setMiembro(Miembro miembro) {
-        this.miembro = miembro;
     }
 
 }

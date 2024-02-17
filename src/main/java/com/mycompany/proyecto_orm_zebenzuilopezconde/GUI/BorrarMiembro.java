@@ -13,6 +13,7 @@ import javax.swing.*;
  *
  * @author Zeben
  */
+@SuppressWarnings("all")
 public class BorrarMiembro extends javax.swing.JDialog {
 
     /**

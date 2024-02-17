@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 /**
  * @author Zeben
  */
+@SuppressWarnings("all")
 public class InsertarMiembrosView extends javax.swing.JDialog {
     HibernateUtil hUtil = new HibernateUtil();
     MiembroDAO miembroDAO = new MiembroDAO(hUtil.getSessionFactory());

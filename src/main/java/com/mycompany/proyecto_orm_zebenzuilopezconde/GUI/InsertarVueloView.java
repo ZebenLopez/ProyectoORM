@@ -11,7 +11,6 @@ import com.mycompany.proyecto_orm_zebenzuilopezconde.entities.Vuelo;
 import com.mycompany.proyecto_orm_zebenzuilopezconde.services.*;
 
 import javax.swing.*;
-import java.util.List;
 
 /**
  *
@@ -212,9 +211,9 @@ public class InsertarVueloView extends javax.swing.JDialog {
         String destino = destinoText.getText();
         String fecha = fechaText.getText();
         String hora = horaText.getText();
-        Piloto piloto = pilotoDAO.obtenerPilotoPorId(Long.parseLong(pilotoText.getText()));
-        Avion avion = avionDAO.obtenerAvionPorId(Long.parseLong(avionText.getText()));
-        Miembro miembro = miembroDAO.obtenerMiembroPorId(Long.parseLong(miembroText.getText()));
+        Piloto piloto = pilotoDAO.verPilotoPorId(Long.parseLong(pilotoText.getText()));
+        Avion avion = avionDAO.verAvionPorId(Long.parseLong(avionText.getText()));
+        Miembro miembro = miembroDAO.verMiembroPorId(Long.parseLong(miembroText.getText()));
 
         Vuelo vueloNuevo = new Vuelo();
         vueloNuevo.setOrigen(origen);

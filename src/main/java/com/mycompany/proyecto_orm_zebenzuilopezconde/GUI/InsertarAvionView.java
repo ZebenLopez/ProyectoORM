@@ -14,6 +14,7 @@ import javax.swing.JFrame;
  *
  * @author Zeben
  */
+@SuppressWarnings("all")
 public class InsertarAvionView extends javax.swing.JDialog {
     HibernateUtil hUtil = new HibernateUtil();
     AvionDAO avionDAO = new AvionDAO(hUtil.getSessionFactory());

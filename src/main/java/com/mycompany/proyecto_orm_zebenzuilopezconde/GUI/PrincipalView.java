@@ -302,7 +302,7 @@ public class PrincipalView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private void llenarTablaConPilotos() {
         // Obtén los datos de los pilotos
-        List<Piloto> pilotos = pilotoDao.obtenerTodos();
+        List<Piloto> pilotos = pilotoDao.verTodosLosPilotos();
 
         // Define las columnas para los pilotos
         String[] columnas = {"ID", "Nombre", "Horas de Vuelo"};
@@ -325,7 +325,7 @@ public class PrincipalView extends javax.swing.JFrame {
 
     private void llenarTablaConAviones() {
         // Obtén los datos de los aviones
-        List<Avion> aviones = avionDao.obtenerTodos();
+        List<Avion> aviones = avionDao.verTodosLosAviones();
 
         // Define las columnas para los aviones
         String[] columnas = {"ID", "Codigo"};
@@ -347,7 +347,7 @@ public class PrincipalView extends javax.swing.JFrame {
 
     private void llenarTablaConMiembros() {
         // Obtén los datos de los miembros
-        List<Miembro> miembros = miembroDao.obtenerTodos();
+        List<Miembro> miembros = miembroDao.verTodosLosMiembros();
 
         // Define las columnas para los miembros
         String[] columnas = {"ID", "Codigo", "Nombre"};
@@ -370,7 +370,7 @@ public class PrincipalView extends javax.swing.JFrame {
 
     private void llenarTablaConVuelos() {
         // Obtén los datos de los vuelos
-        List<Vuelo> vuelos = vueloDao.obtenerTodos();
+        List<Vuelo> vuelos = vueloDao.verTodosLosVuelos();
 
         // Define las columnas para los vuelos
         String[] columnas = {"ID", "Origen", "Destino", "Número de Vuelo", "Fecha", "Hora de Salida", "ID Avión", "ID Miembro", "ID Piloto"};
