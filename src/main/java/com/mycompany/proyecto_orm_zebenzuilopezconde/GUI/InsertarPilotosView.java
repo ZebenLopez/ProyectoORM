@@ -10,15 +10,26 @@ import com.mycompany.proyecto_orm_zebenzuilopezconde.services.HibernateUtil;
 import com.mycompany.proyecto_orm_zebenzuilopezconde.services.MiembroDAO;
 import com.mycompany.proyecto_orm_zebenzuilopezconde.services.PilotoDAO;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 /**
+ * The type Insertar pilotos view.
+ *
  * @author Zeben
  */
 public class InsertarPilotosView extends javax.swing.JDialog {
+    /**
+     * The H util.
+     */
     HibernateUtil hUtil = new HibernateUtil();
+    /**
+     * The Piloto dao.
+     */
     PilotoDAO pilotoDAO = new PilotoDAO(hUtil.getSessionFactory());
 
+    /**
+     * Instantiates a new Insertar pilotos view.
+     */
     public InsertarPilotosView() {
         initComponents();
         pilotoDAO = new PilotoDAO(hUtil.getSessionFactory());
@@ -29,6 +40,9 @@ public class InsertarPilotosView extends javax.swing.JDialog {
 
     /**
      * Creates new form InsertarView
+     *
+     * @param parent the parent
+     * @param modal  the modal
      */
     public InsertarPilotosView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -88,56 +102,56 @@ public class InsertarPilotosView extends javax.swing.JDialog {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(25, 25, 25)
-                            .addComponent(botonVolver)
-                            .addGap(35, 35, 35)
-                            .addComponent(jButton1)
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel3))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(horasText)
-                                .addComponent(nombreText)
-                                .addComponent(codigoText, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                        .addGap(25, 25, 25)
+                                                        .addComponent(botonVolver)
+                                                        .addGap(35, 35, 35)
+                                                        .addComponent(jButton1)
+                                                        .addGap(0, 0, Short.MAX_VALUE))
+                                                .addGroup(layout.createSequentialGroup()
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(jLabel4)
+                                                                .addComponent(jLabel1)
+                                                                .addComponent(jLabel3))
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                .addComponent(horasText)
+                                                                .addComponent(nombreText)
+                                                                .addComponent(codigoText, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(54, 54, 54)
+                                                .addComponent(jLabel2)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(codigoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(nombreText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel3))
-                    .addComponent(horasText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonVolver)
-                    .addComponent(jButton1))
-                .addContainerGap(20, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel1)
+                                                        .addComponent(codigoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(25, 25, 25)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel4)
+                                                        .addComponent(nombreText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(31, 31, 31)
+                                                .addComponent(jLabel3))
+                                        .addComponent(horasText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(botonVolver)
+                                        .addComponent(jButton1))
+                                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -147,26 +161,42 @@ public class InsertarPilotosView extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreTextActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    /**
+     * Método que se ejecuta cuando se realiza una acción en el botón jButton1.
+     * Este método se encarga de manejar la lógica cuando se realiza una acción en el botón jButton1.
+     * En este caso, se obtienen los datos ingresados en los campos de texto, se crea un nuevo objeto Piloto,
+     * y se llama al método para insertar el piloto.
+     *
+     * @param evt Evento de acción que ocurre.
+     */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         String codigo = codigoText.getText();
         String nombre = nombreText.getText();
-        int horas = Integer.parseInt(horasText.getText());
+        String horasString = horasText.getText();
+        try {
+            int horas = Integer.parseInt(horasString);
+            Piloto pilotoNuevo = new Piloto(codigo, nombre, horas);
+            pilotoDAO.insertarPiloto(pilotoNuevo);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Las horas deben ser un número entero");
+        }
+    }
 
-        Piloto pilotoNuevo = new Piloto(codigo, nombre, horas);
-        pilotoDAO.insertarPiloto(pilotoNuevo);
-
-        codigoText.setText("");
-        nombreText.setText("");
-        horasText.setText("");
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    /**
+     * Método que se ejecuta cuando se realiza una acción en el botón botonVolver.
+     * Este método se encarga de manejar la lógica cuando se realiza una acción en el botón botonVolver.
+     * En este caso, se cierra la ventana actual.
+     *
+     * @param evt Evento de acción que ocurre.
+     */
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_botonVolverActionPerformed
 
     /**
+     * Main.
+     *
      * @param args the command line arguments
      */
     public static void main(String args[]) {

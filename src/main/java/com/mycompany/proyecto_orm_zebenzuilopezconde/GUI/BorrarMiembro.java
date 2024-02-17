@@ -10,6 +10,7 @@ import com.mycompany.proyecto_orm_zebenzuilopezconde.services.MiembroDAO;
 import javax.swing.*;
 
 /**
+ * The type Borrar miembro.
  *
  * @author Zeben
  */
@@ -18,6 +19,9 @@ public class BorrarMiembro extends javax.swing.JDialog {
 
     /**
      * Creates new form BorrarMiembro
+     *
+     * @param parent the parent
+     * @param modal  the modal
      */
     public BorrarMiembro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -26,6 +30,12 @@ public class BorrarMiembro extends javax.swing.JDialog {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
+    /**
+     * @autor Zebenzui López Conde
+     * @version 1.0
+     *
+     * Instantiates a new Borrar miembro.
+     */
     public BorrarMiembro() {
         initComponents();
     }
@@ -116,7 +126,9 @@ public class BorrarMiembro extends javax.swing.JDialog {
     private void idTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idTextActionPerformed
-
+    /**
+     * Método que se ejecuta cuando se realiza una acción en el botón borrar.
+     */
     private void borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarActionPerformed
         // TODO add your handling code here:
         // Obtén el ID del miembro que deseas borrar
@@ -132,13 +144,17 @@ public class BorrarMiembro extends javax.swing.JDialog {
         idText.setText("");
 
     }//GEN-LAST:event_borrarActionPerformed
-
+    /**
+     * Método que se ejecuta cuando se realiza una acción en el botón volver.
+     */
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_volverActionPerformed
 
     /**
+     * Main.
+     *
      * @param args the command line arguments
      */
     public static void main(String args[]) {

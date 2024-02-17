@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package com.mycompany.proyecto_orm_zebenzuilopezconde.GUI;
 
 import com.mycompany.proyecto_orm_zebenzuilopezconde.services.AvionDAO;
@@ -10,14 +6,19 @@ import com.mycompany.proyecto_orm_zebenzuilopezconde.services.HibernateUtil;
 import javax.swing.*;
 
 /**
+ * The type Borrar avion.
  *
- * @author Zeben
+ * @version 1.0
+ * @autor Zebenzui López Conde
  */
 @SuppressWarnings("all")
 public class BorrarAvion extends javax.swing.JDialog {
 
     /**
      * Creates new form BorrarAvion
+     *
+     * @param parent the parent
+     * @param modal  the modal
      */
     public BorrarAvion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -26,6 +27,9 @@ public class BorrarAvion extends javax.swing.JDialog {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
+    /**
+     * Instantiates a new Borrar avion.
+     */
     public BorrarAvion() {
         initComponents();
     }
@@ -116,7 +120,9 @@ public class BorrarAvion extends javax.swing.JDialog {
     private void idTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idTextActionPerformed
-
+    /**
+     * Método que se ejecuta cuando se realiza una acción en el botón borrar.
+     */
     private void borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarActionPerformed
         // TODO add your handling code here:
         // Obtén el ID del avión que deseas borrar
@@ -131,21 +137,20 @@ public class BorrarAvion extends javax.swing.JDialog {
 
         idText.setText("");
     }//GEN-LAST:event_borrarActionPerformed
-
+    /**
+     * Método que se ejecuta cuando se realiza una acción en el botón volver.
+     */
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_volverActionPerformed
 
     /**
+     * Main.
+     *
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -162,9 +167,6 @@ public class BorrarAvion extends javax.swing.JDialog {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(BorrarAvion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 BorrarAvion dialog = new BorrarAvion(new javax.swing.JFrame(), true);
@@ -179,11 +181,9 @@ public class BorrarAvion extends javax.swing.JDialog {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton borrar;
     private javax.swing.JTextField idText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton volver;
-    // End of variables declaration//GEN-END:variables
 }

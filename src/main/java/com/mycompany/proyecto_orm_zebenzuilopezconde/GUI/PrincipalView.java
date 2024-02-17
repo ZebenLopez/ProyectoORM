@@ -15,13 +15,30 @@ import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
 /**
+ * The type Principal view.
+ *
  * @author Zeben
  */
 public class PrincipalView extends javax.swing.JFrame {
+    /**
+     * The H util.
+     */
     HibernateUtil hUtil = new HibernateUtil();
+    /**
+     * The Avion dao.
+     */
     AvionDAO avionDao = new AvionDAO(hUtil.getSessionFactory());
+    /**
+     * The Miembro dao.
+     */
     MiembroDAO miembroDao = new MiembroDAO(hUtil.getSessionFactory());
+    /**
+     * The Piloto dao.
+     */
     PilotoDAO pilotoDao = new PilotoDAO(hUtil.getSessionFactory());
+    /**
+     * The Vuelo dao.
+     */
     VueloDAO vueloDao = new VueloDAO(hUtil.getSessionFactory());
 
 
@@ -46,6 +63,7 @@ public class PrincipalView extends javax.swing.JFrame {
         tablita = new javax.swing.JTable();
         comboBox = new javax.swing.JComboBox<>();
         Buscar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         menuPiloto = new javax.swing.JMenuItem();
@@ -60,21 +78,21 @@ public class PrincipalView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        tablita.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
         tablita.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
+                new Object[][]{
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null}
+                },
+                new String[]{
+                        "Title 1", "Title 2"
+                }
         ));
         jScrollPane1.setViewportView(tablita);
 
-        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilotos", "Miembros", "Aviones", "Vuelos" }));
-;
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Pilotos", "Miembros", "Aviones", "Vuelos"}));
 
         Buscar.setText("Buscar");
         Buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -82,6 +100,9 @@ public class PrincipalView extends javax.swing.JFrame {
                 BuscarActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
+        jLabel1.setText("Busqueda de:");
 
         jMenu2.setText("Insertar");
 
@@ -160,53 +181,95 @@ public class PrincipalView extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101)
-                .addComponent(Buscar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(21, Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel1)
+                                .addGap(28, 28, 28)
+                                .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(68, 68, 68)
+                                .addComponent(Buscar)
+                                .addGap(132, 132, 132))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Buscar))
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(Buscar)
+                                        .addComponent(jLabel1))
+                                .addGap(27, 27, 27)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Método que se ejecuta cuando se realiza una acción en el menú Piloto.
+     * Este método se encarga de manejar la lógica cuando se realiza una acción en el menú Piloto.
+     * En este caso, se abre la ventana para insertar un nuevo piloto.
+     *
+     * @param evt Evento de acción que ocurre.
+     */
     private void menuPilotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPilotoActionPerformed
         // TODO add your handling code here:
         InsertarPilotosView insertarPilotoView = new InsertarPilotosView();
         insertarPilotoView.setVisible(true);
     }//GEN-LAST:event_menuPilotoActionPerformed
 
+    /**
+     * Método que se ejecuta cuando se realiza una acción en el menú Miembro.
+     * Este método se encarga de manejar la lógica cuando se realiza una acción en el menú Miembro.
+     * En este caso, se abre la ventana para insertar un nuevo miembro.
+     *
+     * @param evt Evento de acción que ocurre.
+     */
     private void menuMiembroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMiembroActionPerformed
         // TODO add your handling code here:
         InsertarMiembrosView insertarMiembroView = new InsertarMiembrosView();
         insertarMiembroView.setVisible(true);
     }//GEN-LAST:event_menuMiembroActionPerformed
 
+    /**
+     * Método que se ejecuta cuando se realiza una acción en el menú Avión.
+     * Este método se encarga de manejar la lógica cuando se realiza una acción en el menú Avión.
+     * En este caso, se abre la ventana para insertar un nuevo avión.
+     *
+     * @param evt Evento de acción que ocurre.
+     */
     private void menuAvionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAvionActionPerformed
         // TODO add your handling code here:
         InsertarAvionView insertarAvionView = new InsertarAvionView();
         insertarAvionView.setVisible(true);
     }//GEN-LAST:event_menuAvionActionPerformed
 
+    /**
+     * Método que se ejecuta cuando se realiza una acción en el menú Vuelo.
+     * Este método se encarga de manejar la lógica cuando se realiza una acción en el menú Vuelo.
+     * En este caso, se abre la ventana para insertar un nuevo vuelo.
+     *
+     * @param evt Evento de acción que ocurre.
+     */
     private void menuVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVueloActionPerformed
         // TODO add your handling code here:
         InsertarVueloView insertarVueloView = new InsertarVueloView();
         insertarVueloView.setVisible(true);
     }//GEN-LAST:event_menuVueloActionPerformed
 
+    /**
+     * Método que se ejecuta cuando se realiza una acción en el botón Buscar.
+     * Este método se encarga de manejar la lógica cuando se realiza una acción en el botón Buscar.
+     * En este caso, se obtiene la selección del comboBox y se llena la tabla con los datos correspondientes.
+     *
+     * @param evt Evento de acción que ocurre.
+     */
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         // TODO add your handling code here:
         String seleccion = comboBox.getSelectedItem().toString();
@@ -251,6 +314,8 @@ public class PrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_borrarVueloActionPerformed
 
     /**
+     * Main.
+     *
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -292,6 +357,7 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenu borrarPiloto;
     private javax.swing.JMenuItem borrarVuelo;
     private javax.swing.JComboBox<String> comboBox;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -301,6 +367,7 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuPiloto;
     private javax.swing.JMenuItem menuVuelo;
     private javax.swing.JTable tablita;
+
     // End of variables declaration//GEN-END:variables
     private void llenarTablaConPilotos() {
         // Obtén los datos de los pilotos

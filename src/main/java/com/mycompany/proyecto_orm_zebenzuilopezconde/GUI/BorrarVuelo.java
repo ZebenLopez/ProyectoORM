@@ -10,6 +10,7 @@ import com.mycompany.proyecto_orm_zebenzuilopezconde.services.VueloDAO;
 import javax.swing.*;
 
 /**
+ * The type Borrar vuelo.
  *
  * @author Zeben
  */
@@ -18,6 +19,9 @@ public class BorrarVuelo extends javax.swing.JDialog {
 
     /**
      * Creates new form BorrarVuelo
+     *
+     * @param parent the parent
+     * @param modal  the modal
      */
     public BorrarVuelo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -26,6 +30,9 @@ public class BorrarVuelo extends javax.swing.JDialog {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
+    /**
+     * Instantiates a new Borrar vuelo.
+     */
     public BorrarVuelo() {
         initComponents();
     }
@@ -117,6 +124,14 @@ public class BorrarVuelo extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_idTextActionPerformed
 
+    /**
+     * Método que se ejecuta cuando se realiza una acción en el botón borrar.
+     * Este método se encarga de manejar la lógica cuando se realiza una acción en el botón borrar.
+     * En este caso, se obtiene el ID del vuelo que se desea borrar, se crea una instancia de VueloDAO,
+     * y se llama al método para borrar el vuelo.
+     *
+     * @param evt Evento de acción que ocurre.
+     */
     private void borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarActionPerformed
         // TODO add your handling code here:
         // Obtén el ID del vuelo que deseas borrar
@@ -132,13 +147,21 @@ public class BorrarVuelo extends javax.swing.JDialog {
         idText.setText("");
 
     }//GEN-LAST:event_borrarActionPerformed
-
+    /**
+     * Método que se ejecuta cuando se realiza una acción en el botón volver.
+     * Este método se encarga de manejar la lógica cuando se realiza una acción en el botón volver.
+     * En este caso, se cierra la ventana actual.
+     *
+     * @param evt Evento de acción que ocurre.
+     */
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_volverActionPerformed
 
     /**
+     * Main.
+     *
      * @param args the command line arguments
      */
     public static void main(String args[]) {

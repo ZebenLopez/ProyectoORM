@@ -208,76 +208,90 @@ public class InsertarVueloView extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_origenTextActionPerformed
 
+    /**
+     * Método que se ejecuta cuando se realiza una acción en el botón botonVolver.
+     * Este método se encarga de manejar la lógica cuando se realiza una acción en el botón botonVolver.
+     * En este caso, se cierra la ventana actual.
+     *
+     * @param evt Evento de acción que ocurre.
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
-    // TODO add your handling code here:
-    String codigo = numVueloText.getText();
-    String origen = origenText.getText();
-    String destino = destinoText.getText();
-    String fecha = fechaText.getText();
-    String hora = horaText.getText();
-    Long idPiloto = Long.parseLong(pilotoText.getText());
-    Long idAvion = Long.parseLong(avionText.getText());
-    Long idMiembro = Long.parseLong(miembroText.getText());
+        // TODO add your handling code here:
+        String codigo = numVueloText.getText();
+        String origen = origenText.getText();
+        String destino = destinoText.getText();
+        String fecha = fechaText.getText();
+        String hora = horaText.getText();
+        long idPiloto;
+        long idAvion;
+        long idMiembro;
 
-    // Verificar si el piloto, avión y miembro existen
-    Piloto piloto = pilotoDAO.verPilotoPorId(idPiloto);
-    Avion avion = avionDAO.verAvionPorId(idAvion);
-    Miembro miembro = miembroDAO.verMiembroPorId(idMiembro);
+        try {
+            idPiloto = Long.parseLong(pilotoText.getText());
+            idAvion = Long.parseLong(avionText.getText());
+            idMiembro = Long.parseLong(miembroText.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Los ID del piloto, avión y miembro deben ser números");
+            return;
+        }
+        // Verificar si el piloto, avión y miembro existen
+        Piloto piloto = pilotoDAO.verPilotoPorId(idPiloto);
+        Avion avion = avionDAO.verAvionPorId(idAvion);
+        Miembro miembro = miembroDAO.verMiembroPorId(idMiembro);
 
-    if (numVueloText.getText().isEmpty() || origenText.getText().isEmpty() || destinoText.getText().isEmpty()
-            || fechaText.getText().isEmpty() || horaText.getText().isEmpty() || pilotoText.getText().isEmpty()
-            || avionText.getText().isEmpty() || miembroText.getText().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos");
-        return;
-    } else if (piloto == null) {
-        JOptionPane.showMessageDialog(null, "No se encontró un piloto con ID: " + idPiloto);
-        return;
-    } else if (avion == null) {
-        JOptionPane.showMessageDialog(null, "No se encontró un avión con ID: " + idAvion);
-        return;
-    } else if (miembro == null) {
-        JOptionPane.showMessageDialog(null, "No se encontró un miembro con ID: " + idMiembro);
-        return;
+        if (numVueloText.getText().isEmpty() || origenText.getText().isEmpty() || destinoText.getText().isEmpty()
+                || fechaText.getText().isEmpty() || horaText.getText().isEmpty() || pilotoText.getText().isEmpty()
+                || avionText.getText().isEmpty() || miembroText.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos");
+            return;
+        } else if (piloto == null) {
+            JOptionPane.showMessageDialog(null, "No se encontró un piloto con ID: " + idPiloto);
+            return;
+        } else if (avion == null) {
+            JOptionPane.showMessageDialog(null, "No se encontró un avión con ID: " + idAvion);
+            return;
+        } else if (miembro == null) {
+            JOptionPane.showMessageDialog(null, "No se encontró un miembro con ID: " + idMiembro);
+            return;
+        }
+
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+
+        try {
+            LocalDate.parse(fecha, dateFormatter);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "La fecha debe estar en el formato 'yyyy-MM-dd'");
+            return;
+        }
+
+        try {
+            LocalTime.parse(hora, timeFormatter);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "La hora debe estar en el formato 'HH:mm'");
+            return;
+        }
+
+        Vuelo vueloNuevo = new Vuelo();
+        vueloNuevo.setOrigen(origen);
+        vueloNuevo.setDestino(destino);
+        vueloNuevo.setNumeroDeVuelo(codigo);
+        vueloNuevo.setFechaVuelo(LocalDate.parse(fecha, dateFormatter));
+        vueloNuevo.setHoraSalida(LocalTime.parse(hora, timeFormatter));
+        vueloNuevo.setPiloto(piloto);
+        vueloNuevo.setMiembro(miembro);
+        vueloNuevo.setAvion(avion);
+
+        vueloDAO.insertarVuelo(vueloNuevo);
     }
 
-    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
-
-    try {
-        LocalDate.parse(fecha, dateFormatter);
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "La fecha debe estar en el formato 'yyyy-MM-dd'");
-        return;
-    }
-
-    try {
-        LocalTime.parse(hora, timeFormatter);
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "La hora debe estar en el formato 'HH:mm'");
-        return;
-    }
-
-    Vuelo vueloNuevo = new Vuelo();
-    vueloNuevo.setOrigen(origen);
-    vueloNuevo.setDestino(destino);
-    vueloNuevo.setNumeroDeVuelo(codigo);
-    vueloNuevo.setFechaVuelo(LocalDate.parse(fecha, dateFormatter));
-    vueloNuevo.setHoraSalida(LocalTime.parse(hora, timeFormatter));
-    vueloNuevo.setPiloto(piloto);
-    vueloNuevo.setMiembro(miembro);
-    vueloNuevo.setAvion(avion);
-
-    vueloDAO.insertarVuelo(vueloNuevo);
-    numVueloText.setText("");
-    origenText.setText("");
-    destinoText.setText("");
-    fechaText.setText("");
-    horaText.setText("");
-    pilotoText.setText("");
-    avionText.setText("");
-    miembroText.setText("");
-}
-
+    /**
+     * Método que se ejecuta cuando se realiza una acción en el botón botonVolver2.
+     * Este método se encarga de manejar la lógica cuando se realiza una acción en el botón botonVolver2.
+     * En este caso, se cierra la ventana actual.
+     *
+     * @param evt Evento de acción que ocurre.
+     */
     private void botonVolver2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolver2ActionPerformed
         // TODO add your handling code here:
         this.dispose();

@@ -11,14 +11,24 @@ import com.mycompany.proyecto_orm_zebenzuilopezconde.services.HibernateUtil;
 import javax.swing.JFrame;
 
 /**
+ * The type Insertar avion view.
  *
  * @author Zeben
  */
 @SuppressWarnings("all")
 public class InsertarAvionView extends javax.swing.JDialog {
+    /**
+     * The H util.
+     */
     HibernateUtil hUtil = new HibernateUtil();
+    /**
+     * The Avion dao.
+     */
     AvionDAO avionDAO = new AvionDAO(hUtil.getSessionFactory());
-    
+
+    /**
+     * Instantiates a new Insertar avion view.
+     */
     public InsertarAvionView() {
         initComponents();
         avionDAO = new AvionDAO(hUtil.getSessionFactory());
@@ -28,6 +38,9 @@ public class InsertarAvionView extends javax.swing.JDialog {
 
     /**
      * Creates new form InsertarAvionView
+     *
+     * @param parent the parent
+     * @param modal  the modal
      */
     public InsertarAvionView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -132,7 +145,13 @@ public class InsertarAvionView extends javax.swing.JDialog {
     private void nombreTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreTextActionPerformed
-
+    /**
+     * Método que se ejecuta cuando se realiza una acción en el botón volver.
+     * Este método se encarga de manejar la lógica cuando se realiza una acción en el botón volver.
+     * En este caso, se cierra la ventana actual.
+     *
+     * @param evt Evento de acción que ocurre.
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String codigo = codigoText.getText();
@@ -144,13 +163,21 @@ public class InsertarAvionView extends javax.swing.JDialog {
         codigoText.setText("");
         nombreText.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    /**
+     * Método que se ejecuta cuando se realiza una acción en el botón botonVolver.
+     * Este método se encarga de manejar la lógica cuando se realiza una acción en el botón botonVolver.
+     * En este caso, se cierra la ventana actual.
+     *
+     * @param evt Evento de acción que ocurre.
+     */
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_botonVolverActionPerformed
 
     /**
+     * Main.
+     *
      * @param args the command line arguments
      */
     public static void main(String args[]) {

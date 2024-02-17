@@ -56,7 +56,6 @@ public void insertarVuelo(Vuelo vuelo) {
                 return;
             }
         }
-
         // Verificar si el piloto, miembro o avión ya están asignados a un vuelo en la misma fecha y hora
         if (existeVueloConMismosRecursos(vuelo)) {
             joptionMessage("Ya existe un vuelo con los mismos recursos en la misma fecha y hora");
@@ -106,12 +105,12 @@ public void insertarVuelo(Vuelo vuelo) {
 
     public boolean existeVueloConMismosRecursos(Vuelo vuelo) {
         try (Session session = sessionFactory.openSession()) {
-            Query query = session.createQuery("FROM Vuelo v WHERE v.fechaVuelo = :fecha AND v.horaSalida = :hora AND (v.piloto.id_piloto = :pilotoId OR v.miembro.id_miembro = :miembroId OR v.avion.id_avion = :avionId)");
+            Query query = session.createQuery("FROM Vuelo v WHERE v.fechaVuelo = :fecha AND v.horaSalida = :hora AND (v.piloto.id_piloto = :pilotoId OR v.miembro.id_miembro = :miembroId)");
             query.setParameter("fecha", vuelo.getFechaVuelo());
             query.setParameter("hora", vuelo.getHoraSalida());
             query.setParameter("pilotoId", vuelo.getPiloto().getId_piloto());
             query.setParameter("miembroId", vuelo.getMiembro().getId_miembro());
-            query.setParameter("avionId", vuelo.getAvion().getId_avion());
+//            query.setParameter("avionId", vuelo.getAvion().getId_avion());
             List results = query.list();
             return !results.isEmpty();
         }

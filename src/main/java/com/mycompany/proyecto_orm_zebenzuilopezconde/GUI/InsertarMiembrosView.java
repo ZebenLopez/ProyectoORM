@@ -11,14 +11,25 @@ import com.mycompany.proyecto_orm_zebenzuilopezconde.services.MiembroDAO;
 import javax.swing.JFrame;
 
 /**
+ * The type Insertar miembros view.
+ *
  * @author Zeben
  */
 @SuppressWarnings("all")
 public class InsertarMiembrosView extends javax.swing.JDialog {
+    /**
+     * The H util.
+     */
     HibernateUtil hUtil = new HibernateUtil();
+    /**
+     * The Miembro dao.
+     */
     MiembroDAO miembroDAO = new MiembroDAO(hUtil.getSessionFactory());
 
 
+    /**
+     * Instantiates a new Insertar miembros view.
+     */
     public InsertarMiembrosView() {
         initComponents();
         miembroDAO = new MiembroDAO(hUtil.getSessionFactory());
@@ -28,6 +39,9 @@ public class InsertarMiembrosView extends javax.swing.JDialog {
 
     /**
      * Creates new form InsertarMiembrosView
+     *
+     * @param parent the parent
+     * @param modal  the modal
      */
     public InsertarMiembrosView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -133,6 +147,14 @@ public class InsertarMiembrosView extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreTextActionPerformed
 
+    /**
+     * Método que se ejecuta cuando se realiza una acción en el botón botonInsertarMiembro.
+     * Este método se encarga de manejar la lógica cuando se realiza una acción en el botón botonInsertarMiembro.
+     * En este caso, se obtienen los datos ingresados en los campos de texto, se crea un nuevo objeto Miembro,
+     * y se llama al método para insertar el miembro.
+     *
+     * @param evt Evento de acción que ocurre.
+     */
     private void botonInsertarMiembroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInsertarMiembroActionPerformed
         // TODO add your handling code here:
         String codigo = codigoText.getText();
@@ -144,13 +166,21 @@ public class InsertarMiembrosView extends javax.swing.JDialog {
         codigoText.setText("");
         nombreText.setText("");
     }//GEN-LAST:event_botonInsertarMiembroActionPerformed
-
+    /**
+     * Método que se ejecuta cuando se realiza una acción en el botón botonVolver.
+     * Este método se encarga de manejar la lógica cuando se realiza una acción en el botón botonVolver.
+     * En este caso, se cierra la ventana actual.
+     *
+     * @param evt Evento de acción que ocurre.
+     */
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_botonVolverActionPerformed
 
     /**
+     * Main.
+     *
      * @param args the command line arguments
      */
     public static void main(String args[]) {
